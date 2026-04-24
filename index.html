@@ -4,17 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Swit Developer | Digital Marketing & Web Development Agency</title>
-  <meta name="description" content="Transform your business with Swit Developer - Premium Shopify, WordPress, AI automation, and digital marketing solutions.">
+  <meta name="description" content="Transform your business with premium Shopify, WordPress, AI automation, and digital marketing solutions.">
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <script>
@@ -22,14 +20,17 @@
       theme: {
         extend: {
           fontFamily: {
-            'serif': ['Playfair Display', 'serif'],
-            'sans': ['Inter', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
           },
           colors: {
-            'brand-dark': '#0f172a',
-            'brand-darker': '#0a0f1c',
-            'brand-cyan': '#00d4ff',
-            'brand-purple': '#7c3aed',
+            brand: {
+              dark: '#0a0a0f',
+              darker: '#050508',
+              cyan: '#00d4ff',
+              purple: '#7c3aed',
+              pink: '#ec4899',
+            }
           }
         }
       }
@@ -37,402 +38,701 @@
   </script>
   
   <style>
-    /* Custom Styles */
-    body { font-family: 'Inter', sans-serif; }
-    .font-serif { font-family: 'Playfair Display', serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
-    /* Gradient Text */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: white;
+      overflow-x: hidden;
+    }
+    
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    
+    /* Noise texture overlay */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    
+    /* Gradient text */
     .gradient-text {
-      background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #ec4899 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #0f172a; }
-    ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 4px; }
-    
-    /* Animations */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease-out;
-    }
-    .fade-up.animate-in {
-      opacity: 1;
-      transform: translateY(0);
+    /* Animated gradient border */
+    .gradient-border {
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
     }
     
-    .fade-in {
-      opacity: 0;
-      transition: opacity 0.6s ease-out;
+    .gradient-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, #00d4ff, #7c3aed, #ec4899, #00d4ff);
+      background-size: 300% 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: gradientRotate 4s ease infinite;
     }
-    .fade-in.animate-in { opacity: 1; }
     
-    /* Hero Background Animation */
-    .hero-gradient {
-      background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                  radial-gradient(ellipse at bottom, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-                  #0f172a;
+    @keyframes gradientRotate {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
     
-    /* Floating Animation */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    
-    /* Glow Effect */
+    /* Glow effect */
     .glow-cyan {
-      box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 0 60px rgba(0, 212, 255, 0.3),
+                  0 0 100px rgba(0, 212, 255, 0.1);
     }
     
-    /* Card Hover */
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-float-delayed {
+      animation: float 6s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+    
+    /* Pulse glow */
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+    
+    .pulse-glow {
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+    
+    /* Marquee animation */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .marquee {
+      animation: marquee 30s linear infinite;
+    }
+    
+    /* Card hover effects */
     .service-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(0, 212, 255, 0.15);
+    }
+    
+    /* Button styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #00d4ff, #7c3aed);
+      position: relative;
+      overflow: hidden;
       transition: all 0.3s ease;
     }
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+    
+    /* Stat counter */
+    .stat-number {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(180deg, #ffffff 0%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Particle canvas */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    
+    /* Image effects */
+    .img-zoom {
+      transition: transform 0.7s ease;
+    }
+    
+    .img-zoom:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Text reveal animation */
+    .text-reveal {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     }
   </style>
 </head>
-<body class="bg-brand-dark text-white overflow-x-hidden">
+<body>
+  <!-- Noise Overlay -->
+  <div class="noise-overlay"></div>
   
-  <!-- Header Placeholder -->
-  <div id="header-placeholder"></div>
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+            <span class="text-white font-bold text-xl">S</span>
+          </div>
+          <span class="font-display font-bold text-xl text-white">Swit Developer</span>
+        </a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="services.html" class="text-white/70 hover:text-cyan-400 transition-colors text-sm font-medium">Services</a>
+          <a href="about.html" class="text-white/70 hover:text-cyan-400 transition-colors text-sm font-medium">About</a>
+          <a href="contact.html" class="text-white/70 hover:text-cyan-400 transition-colors text-sm font-medium">Contact</a>
+          <a href="contact.html" class="btn-primary px-6 py-2.5 rounded-full text-white font-semibold text-sm">
+            Get Quote
+          </a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-white">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
   
   <!-- Hero Section -->
-  <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-20">
+  <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
     <!-- Background Elements -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl animate-float"></div>
-      <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 3s;"></div>
+    <div class="absolute inset-0">
+      <!-- Gradient orbs -->
+      <div class="absolute top-1/4 -left-32 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float-delayed"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-cyan-400/10 to-transparent rounded-full pulse-glow"></div>
+      
+      <!-- Grid pattern -->
+      <div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(0,212,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.1) 1px, transparent 1px); background-size: 100px 100px;"></div>
     </div>
     
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
         <!-- Hero Content -->
-        <div class="fade-up">
-          <div class="inline-flex items-center px-4 py-2 bg-white/5 border border-cyan-400/30 rounded-full mb-6">
-            <span class="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full hero-badge">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
             <span class="text-cyan-400 text-sm font-medium">Available for Projects</span>
           </div>
           
-          <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            Digital <span class="gradient-text">Excellence</span><br>
-            Delivered
+          <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span class="hero-text">We Build</span><br>
+            <span class="gradient-text hero-text">Digital Future</span>
           </h1>
           
-          <p class="text-xl text-white/70 mb-8 max-w-lg leading-relaxed">
-            Transform your online presence with premium Shopify, WordPress, and AI-powered solutions. We build websites that convert.
+          <p class="text-xl text-white/60 max-w-lg hero-text">
+            Premium web development, AI automation, and digital marketing solutions that transform businesses and drive results.
           </p>
           
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
-              Start Your Project
-              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
+          <div class="flex flex-wrap gap-4 hero-buttons">
+            <a href="contact.html" class="btn-primary px-8 py-4 rounded-full text-white font-semibold inline-flex items-center gap-2">
+              Start Project
+              <i class="fas fa-arrow-right"></i>
             </a>
-            <a href="services.html" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all">
+            <a href="services.html" class="px-8 py-4 border border-white/20 rounded-full text-white font-semibold hover:bg-white/5 transition-all inline-flex items-center gap-2">
               View Services
             </a>
           </div>
           
-          <!-- Trust Badges -->
-          <div class="mt-12 flex items-center gap-8">
-            <div>
-              <p class="text-3xl font-bold text-white" data-counter="150" data-suffix="+">0</p>
-              <p class="text-white/50 text-sm">Projects Completed</p>
+          <!-- Trust badges -->
+          <div class="flex items-center gap-6 pt-8 hero-trust">
+            <div class="flex -space-x-3">
+              <img src="https://i.pravatar.cc/100?img=1" class="w-10 h-10 rounded-full border-2 border-brand-dark" alt="Client">
+              <img src="https://i.pravatar.cc/100?img=2" class="w-10 h-10 rounded-full border-2 border-brand-dark" alt="Client">
+              <img src="https://i.pravatar.cc/100?img=3" class="w-10 h-10 rounded-full border-2 border-brand-dark" alt="Client">
+              <div class="w-10 h-10 rounded-full border-2 border-brand-dark bg-cyan-400 flex items-center justify-center text-brand-dark font-bold text-xs">+150</div>
             </div>
-            <div class="h-12 w-px bg-white/20"></div>
-            <div>
-              <p class="text-3xl font-bold text-white" data-counter="98" data-suffix="%">0</p>
-              <p class="text-white/50 text-sm">Client Satisfaction</p>
-            </div>
-            <div class="h-12 w-px bg-white/20"></div>
-            <div>
-              <p class="text-3xl font-bold text-white" data-counter="5" data-suffix="+">0</p>
-              <p class="text-white/50 text-sm">Years Experience</p>
+            <div class="text-white/60 text-sm">
+              <span class="text-white font-semibold">150+</span> Happy Clients
             </div>
           </div>
         </div>
         
         <!-- Hero Visual -->
-        <div class="hidden lg:block fade-up" style="animation-delay: 0.2s;">
-          <div class="relative">
-            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-500/20 rounded-3xl blur-2xl"></div>
-            <div class="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 glow-cyan">
-              <!-- Mock Dashboard UI -->
-              <div class="space-y-4">
+        <div class="relative lg:h-[600px] flex items-center justify-center hero-visual">
+          <!-- Main dashboard mockup -->
+          <div class="relative w-full max-w-lg">
+            <div class="gradient-border p-1">
+              <div class="bg-brand-darker/80 backdrop-blur-xl rounded-2xl p-6 space-y-4">
+                <!-- Mock header -->
                 <div class="flex items-center justify-between">
-                  <div class="flex items-center space-x-2">
-                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
                   </div>
-                  <div class="text-white/30 text-xs">swit-developer.com</div>
+                  <span class="text-white/30 text-xs">Dashboard</span>
                 </div>
+                
+                <!-- Mock content -->
                 <div class="grid grid-cols-3 gap-3">
                   <div class="bg-white/5 rounded-xl p-4 text-center">
                     <i class="fab fa-shopify text-3xl text-cyan-400 mb-2"></i>
-                    <p class="text-xs text-white/60">Shopify</p>
+                    <p class="text-xs text-white/50">Shopify</p>
                   </div>
                   <div class="bg-white/5 rounded-xl p-4 text-center">
                     <i class="fab fa-wordpress text-3xl text-blue-400 mb-2"></i>
-                    <p class="text-xs text-white/60">WordPress</p>
+                    <p class="text-xs text-white/50">WordPress</p>
                   </div>
                   <div class="bg-white/5 rounded-xl p-4 text-center">
                     <i class="fas fa-robot text-3xl text-purple-400 mb-2"></i>
-                    <p class="text-xs text-white/60">AI</p>
+                    <p class="text-xs text-white/50">AI</p>
                   </div>
                 </div>
+                
                 <div class="bg-white/5 rounded-xl p-4">
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="text-sm text-white/70">Website Traffic</span>
-                    <span class="text-cyan-400 text-sm font-semibold">+127%</span>
+                  <div class="flex justify-between mb-2">
+                    <span class="text-sm text-white/70">Traffic Growth</span>
+                    <span class="text-sm text-green-400">+127%</span>
                   </div>
                   <div class="h-2 bg-white/10 rounded-full overflow-hidden">
-                    <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 w-3/4"></div>
+                    <div class="h-full bg-gradient-to-r from-cyan-400 to-purple-500 w-3/4 rounded-full"></div>
                   </div>
                 </div>
+                
+                <!-- Floating elements -->
+                <div class="absolute -top-4 -right-4 bg-green-400 text-brand-dark px-3 py-1 rounded-full text-xs font-bold animate-float">
+                  +45% ROI
+                </div>
+              </div>
+            </div>
+            
+            <!-- Floating badges -->
+            <div class="absolute -bottom-4 -left-4 bg-brand-darker border border-white/10 rounded-xl p-3 animate-float-delayed">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle text-green-400"></i>
+                <span class="text-sm text-white">Project Delivered</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
+  </section>
+  
+  <!-- Stats Section -->
+  <section class="py-20 border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center reveal">
+          <div class="stat-number" data-count="150">0</div>
+          <p class="text-white/50 mt-2">Projects Completed</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="stat-number" data-count="98">0</div>
+          <p class="text-white/50 mt-2">Client Satisfaction %</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="stat-number" data-count="5">0</div>
+          <p class="text-white/50 mt-2">Years Experience</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="stat-number" data-count="50">0</div>
+          <p class="text-white/50 mt-2">Happy Clients</p>
+        </div>
+      </div>
     </div>
   </section>
   
   <!-- Services Section -->
-  <section class="py-24 bg-brand-darker">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 fade-up">
-        <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">What We Do</span>
-        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
-          Services That Drive <span class="gradient-text">Results</span>
+  <section class="py-32 relative overflow-hidden">
+    <!-- Background text -->
+    <div class="absolute top-1/2 left-0 -translate-y-1/2 whitespace-nowrap text-[20vw] font-display font-bold text-white/[0.02] marquee">
+      SERVICES • SHOPIFY • WORDPRESS • AI • MARKETING • 
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+      <div class="text-center mb-16 reveal">
+        <span class="text-cyan-400 font-semibold uppercase tracking-widest text-sm">What We Do</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold mt-4">
+          Services That <span class="gradient-text">Drive Results</span>
         </h2>
-        <p class="text-white/60 text-lg max-w-2xl mx-auto">
-          From e-commerce platforms to AI automation, we provide comprehensive digital solutions tailored to your business.
-        </p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Shopify -->
-        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up">
+        <!-- Service 1 -->
+        <div class="service-card gradient-border p-8 rounded-2xl reveal">
           <div class="w-14 h-14 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6">
             <i class="fab fa-shopify text-3xl text-cyan-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Shopify Development</h3>
+          <h3 class="font-display text-xl font-bold mb-3">Shopify Development</h3>
           <p class="text-white/60 mb-6">Custom themes, app integrations, and store optimization for maximum conversions.</p>
-          <a href="shopify.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-            Learn More
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+          <a href="shopify.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
           </a>
         </div>
         
-        <!-- WordPress -->
-        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.1s;">
+        <!-- Service 2 -->
+        <div class="service-card gradient-border p-8 rounded-2xl reveal">
           <div class="w-14 h-14 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-xl flex items-center justify-center mb-6">
             <i class="fab fa-wordpress text-3xl text-blue-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">WordPress Development</h3>
-          <p class="text-white/60 mb-6">Custom themes, plugin development, and enterprise-level WordPress solutions.</p>
-          <a href="wordpress.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-            Learn More
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+          <h3 class="font-display text-xl font-bold mb-3">WordPress Development</h3>
+          <p class="text-white/60 mb-6">Custom themes, plugins, and enterprise WordPress solutions that scale.</p>
+          <a href="wordpress.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
           </a>
         </div>
         
-        <!-- Web Solutions -->
-        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.2s;">
+        <!-- Service 3 -->
+        <div class="service-card gradient-border p-8 rounded-2xl reveal">
           <div class="w-14 h-14 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6">
             <i class="fas fa-server text-3xl text-purple-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Web Solutions</h3>
-          <p class="text-white/60 mb-6">Wix, cPanel management, hosting setup, and domain configuration services.</p>
-          <a href="web-solutions.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-            Learn More
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+          <h3 class="font-display text-xl font-bold mb-3">Web Solutions</h3>
+          <p class="text-white/60 mb-6">Wix, cPanel, hosting setup, and domain configuration services.</p>
+          <a href="web-solutions.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
           </a>
         </div>
         
-        <!-- AI Automation -->
-        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.3s;">
+        <!-- Service 4 -->
+        <div class="service-card gradient-border p-8 rounded-2xl reveal">
           <div class="w-14 h-14 bg-gradient-to-br from-green-400/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-6">
             <i class="fas fa-robot text-3xl text-green-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">AI Automation</h3>
-          <p class="text-white/60 mb-6">Chatbots, workflow automation, and AI integration to streamline your business.</p>
-          <a href="ai-automation.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-            Learn More
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+          <h3 class="font-display text-xl font-bold mb-3">AI Automation</h3>
+          <p class="text-white/60 mb-6">Chatbots, workflow automation, and AI integration for efficiency.</p>
+          <a href="ai-automation.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
           </a>
         </div>
         
-        <!-- Marketing -->
-        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.4s;">
+        <!-- Service 5 -->
+        <div class="service-card gradient-border p-8 rounded-2xl reveal">
           <div class="w-14 h-14 bg-gradient-to-br from-orange-400/20 to-red-500/20 rounded-xl flex items-center justify-center mb-6">
             <i class="fas fa-chart-line text-3xl text-orange-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Digital Marketing</h3>
-          <p class="text-white/60 mb-6">SEO, social media management, and paid advertising campaigns that deliver ROI.</p>
-          <a href="marketing.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-            Learn More
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+          <h3 class="font-display text-xl font-bold mb-3">Digital Marketing</h3>
+          <p class="text-white/60 mb-6">SEO, social media, and paid advertising campaigns that deliver ROI.</p>
+          <a href="marketing.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
           </a>
         </div>
         
-        <!-- Custom Solutions -->
-        <div class="service-card bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-2xl p-8 fade-up" style="animation-delay: 0.5s;">
+        <!-- Service 6 -->
+        <div class="service-card gradient-border p-8 rounded-2xl reveal">
           <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center mb-6">
             <i class="fas fa-lightbulb text-3xl text-white"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Custom Solutions</h3>
-          <p class="text-white/60 mb-6">Need something unique? We build custom web applications tailored to your needs.</p>
-          <a href="contact.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-            Discuss Your Project
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+          <h3 class="font-display text-xl font-bold mb-3">Custom Solutions</h3>
+          <p class="text-white/60 mb-6">Need something unique? We build custom solutions for your needs.</p>
+          <a href="contact.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Get Quote <i class="fas fa-arrow-right ml-2"></i>
           </a>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12">
-        <a href="services.html" class="inline-flex items-center px-8 py-4 border border-cyan-400/50 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400/10 transition-all">
-          View All Services
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Stats Section -->
-  <section class="py-20 bg-brand-dark border-y border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="text-center fade-up">
-          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="150" data-suffix="+">0</p>
-          <p class="text-white/60">Projects Completed</p>
-        </div>
-        <div class="text-center fade-up" style="animation-delay: 0.1s;">
-          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="50" data-suffix="+">0</p>
-          <p class="text-white/60">Happy Clients</p>
-        </div>
-        <div class="text-center fade-up" style="animation-delay: 0.2s;">
-          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="5" data-suffix="+">0</p>
-          <p class="text-white/60">Years Experience</p>
-        </div>
-        <div class="text-center fade-up" style="animation-delay: 0.3s;">
-          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="98" data-suffix="%">0</p>
-          <p class="text-white/60">Client Satisfaction</p>
         </div>
       </div>
     </div>
   </section>
   
   <!-- Process Section -->
-  <section class="py-24 bg-brand-darker">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 fade-up">
-        <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">Our Process</span>
-        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
-          How We <span class="gradient-text">Work</span>
-        </h2>
-      </div>
-      
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center fade-up">
-          <div class="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative">
-            <span class="text-2xl font-bold text-cyan-400">01</span>
-            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-cyan-400/50 to-transparent"></div>
-          </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Discovery</h3>
-          <p class="text-white/60">Understanding your goals, audience, and requirements</p>
+  <section class="py-32 bg-brand-darker">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <span class="text-cyan-400 font-semibold uppercase tracking-widest text-sm">Our Process</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6">
+            How We <span class="gradient-text">Work</span>
+          </h2>
+          <p class="text-white/60 text-lg mb-8">
+            A streamlined process designed to deliver exceptional results, from initial discovery to final launch.
+          </p>
+          <a href="contact.html" class="btn-primary px-8 py-4 rounded-full text-white font-semibold inline-flex items-center gap-2">
+            Start Your Project <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
         
-        <div class="text-center fade-up" style="animation-delay: 0.15s;">
-          <div class="w-16 h-16 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative">
-            <span class="text-2xl font-bold text-blue-400">02</span>
-            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-blue-400/50 to-transparent"></div>
+        <div class="space-y-8">
+          <div class="flex gap-6 reveal">
+            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl font-bold text-cyan-400">01</span>
+            </div>
+            <div>
+              <h3 class="font-display text-xl font-bold mb-2">Discovery</h3>
+              <p class="text-white/60">Understanding your goals, audience, and requirements.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Strategy</h3>
-          <p class="text-white/60">Planning the perfect solution for your needs</p>
-        </div>
-        
-        <div class="text-center fade-up" style="animation-delay: 0.3s;">
-          <div class="w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative">
-            <span class="text-2xl font-bold text-purple-400">03</span>
-            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-purple-400/50 to-transparent"></div>
+          
+          <div class="flex gap-6 reveal">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl font-bold text-blue-400">02</span>
+            </div>
+            <div>
+              <h3 class="font-display text-xl font-bold mb-2">Strategy</h3>
+              <p class="text-white/60">Planning the perfect solution for your needs.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Development</h3>
-          <p class="text-white/60">Building with precision and attention to detail</p>
-        </div>
-        
-        <div class="text-center fade-up" style="animation-delay: 0.45s;">
-          <div class="w-16 h-16 bg-gradient-to-br from-green-400/20 to-teal-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-green-400">04</span>
+          
+          <div class="flex gap-6 reveal">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl font-bold text-purple-400">03</span>
+            </div>
+            <div>
+              <h3 class="font-display text-xl font-bold mb-2">Development</h3>
+              <p class="text-white/60">Building with precision and attention to detail.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Launch</h3>
-          <p class="text-white/60">Deploying and supporting your success</p>
+          
+          <div class="flex gap-6 reveal">
+            <div class="w-16 h-16 bg-gradient-to-br from-green-400/20 to-teal-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <span class="text-2xl font-bold text-green-400">04</span>
+            </div>
+            <div>
+              <h3 class="font-display text-xl font-bold mb-2">Launch</h3>
+              <p class="text-white/60">Deploying and supporting your success.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
   
   <!-- CTA Section -->
-  <section class="py-24 bg-gradient-to-br from-cyan-400/10 to-purple-500/10">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="fade-up">
-        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+  <section class="py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-purple-500/10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-400/20 rounded-full blur-3xl pulse-glow"></div>
+    
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative">
+      <div class="reveal">
+        <h2 class="font-display text-4xl md:text-6xl font-bold mb-6">
           Ready to Transform Your <span class="gradient-text">Digital Presence</span>?
         </h2>
-        <p class="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-          Let's discuss your project and create something amazing together. Get a free consultation.
+        <p class="text-xl text-white/60 mb-10 max-w-2xl mx-auto">
+          Let's discuss your project and create something amazing together. Get a free consultation today.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="contact.html" class="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-lg">
-            Get a Free Quote
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-          <a href="services.html" class="inline-flex items-center justify-center px-10 py-5 border border-white/30 text-white font-semibold rounded-full hover:bg-white/5 transition-all text-lg">
-            Explore Services
-          </a>
-        </div>
+        <a href="contact.html" class="btn-primary px-10 py-5 rounded-full text-white font-semibold text-lg inline-flex items-center gap-3">
+          Get a Free Quote <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
   
-  <!-- Footer Placeholder -->
-  <div id="footer-placeholder"></div>
+  <!-- Footer -->
+  <footer class="bg-brand-darker border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+      <div class="grid md:grid-cols-4 gap-12">
+        <!-- Logo -->
+        <div class="md:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
+              <span class="text-white font-bold text-xl">S</span>
+            </div>
+            <span class="font-display font-bold text-xl">Swit Developer</span>
+          </a>
+          <p class="text-white/60 max-w-sm mb-6">
+            Your trusted partner for digital marketing, web development, and AI automation solutions.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-cyan-400 hover:text-white transition-all">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-cyan-400 hover:text-white transition-all">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-cyan-400 hover:text-white transition-all">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Links -->
+        <div>
+          <h4 class="font-semibold mb-4">Services</h4>
+          <ul class="space-y-3">
+            <li><a href="shopify.html" class="text-white/60 hover:text-cyan-400 transition-colors">Shopify</a></li>
+            <li><a href="wordpress.html" class="text-white/60 hover:text-cyan-400 transition-colors">WordPress</a></li>
+            <li><a href="ai-automation.html" class="text-white/60 hover:text-cyan-400 transition-colors">AI Automation</a></li>
+            <li><a href="marketing.html" class="text-white/60 hover:text-cyan-400 transition-colors">Marketing</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Company</h4>
+          <ul class="space-y-3">
+            <li><a href="about.html" class="text-white/60 hover:text-cyan-400 transition-colors">About</a></li>
+            <li><a href="services.html" class="text-white/60 hover:text-cyan-400 transition-colors">Services</a></li>
+            <li><a href="contact.html" class="text-white/60 hover:text-cyan-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/40 text-sm">&copy; 2024 Swit Developer. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-white/40 hover:text-cyan-400 text-sm transition-colors">Privacy</a>
+          <a href="#" class="text-white/40 hover:text-cyan-400 text-sm transition-colors">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
   
   <!-- Scripts -->
-  <script src="js/main.js"></script>
+  <script>
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Hero animations
+    gsap.from(".hero-badge", {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: 0.2,
+      ease: "power3.out"
+    });
+    
+    gsap.from(".hero-text", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      delay: 0.4,
+      ease: "power3.out"
+    });
+    
+    gsap.from(".hero-buttons", {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: 0.8,
+      ease: "power3.out"
+    });
+    
+    gsap.from(".hero-trust", {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: 1,
+      ease: "power3.out"
+    });
+    
+    gsap.from(".hero-visual", {
+      opacity: 0,
+      scale: 0.9,
+      duration: 1,
+      delay: 0.6,
+      ease: "power3.out"
+    });
+    
+    // Stat counter animation
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-count'));
+      
+      ScrollTrigger.create({
+        trigger: counter,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.to(counter, {
+            innerHTML: target,
+            duration: 2,
+            ease: "power2.out",
+            snap: { innerHTML: 1 },
+            onUpdate: function() {
+              counter.innerHTML = Math.round(this.targets()[0].innerHTML) + (target > 100 ? '+' : '%');
+            }
+          });
+        },
+        once: true
+      });
+    });
+    
+    // Scroll reveal animations
+    gsap.utils.toArray('.reveal').forEach((elem, i) => {
+      gsap.from(elem, {
+        scrollTrigger: {
+          trigger: elem,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: "power3.out"
+      });
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('bg-brand-dark/90', 'backdrop-blur-xl', 'border-b', 'border-white/10');
+      } else {
+        navbar.classList.remove('bg-brand-dark/90', 'backdrop-blur-xl', 'border-b', 'border-white/10');
+      }
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    // Add mobile menu functionality if needed
+  </script>
 </body>
 </html>
