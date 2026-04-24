@@ -3,86 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Swit Developer - Your Digital Partner</title>
+  <title>About Us | Swit Developer</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script>tailwind.config={theme:{extend:{fontFamily:{serif:['Playfair Display', 'serif'],sans:['Inter', 'sans-serif']},colors:{'brand-dark':'#0f172a','brand-darker':'#0a0f1c','brand-cyan':'#00d4ff'}}}}</script>
-  <style>body{font-family:'Inter',sans-serif}.font-serif{font-family:'Playfair Display',serif}.gradient-text{background:linear-gradient(135deg,#00d4ff 0%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}</style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif']
+          },
+          colors: {
+            brand: {
+              dark: '#0a0a0f',
+              cyan: '#00d4ff',
+              purple: '#7c3aed'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: white; }
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .btn-primary { background: linear-gradient(135deg, #00d4ff, #7c3aed); position: relative; overflow: hidden; transition: all 0.3s ease; }
+    .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); transition: left 0.5s ease; }
+    .btn-primary:hover::before { left: 100%; }
+    .reveal { opacity: 0; transform: translateY(50px); }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+  </style>
 </head>
-<body class="bg-brand-dark text-white">
-  <div id="header-placeholder"></div>
-  
-  <section class="pt-32 pb-16 bg-gradient-to-b from-cyan-400/5 to-transparent">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">About Us</span>
-          <h1 class="font-serif text-5xl font-bold text-white mt-4 mb-6">Building Digital <span class="gradient-text">Excellence</span></h1>
-          <p class="text-xl text-white/70 mb-6">Swit Developer is a premier digital agency specializing in web development, e-commerce solutions, and AI automation. Since 2020, we've helped 150+ businesses transform their online presence.</p>
-          <p class="text-white/60 mb-6">Our team combines technical expertise with creative innovation to deliver solutions that not only look stunning but drive real business results.</p>
-          <div class="flex gap-4">
-            <a href="contact.html" class="px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg transition-all">Work With Us</a>
-          </div>
+<body>
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center"><span class="text-white font-bold text-xl">S</span></div>
+          <span class="font-display font-bold text-xl">Swit Developer</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="services.html" class="text-white/70 hover:text-cyan-400 transition-colors">Services</a>
+          <a href="about.html" class="text-cyan-400 font-medium">About</a>
+          <a href="contact.html" class="btn-primary px-6 py-2.5 rounded-full text-white font-semibold text-sm">Get Quote</a>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8">
-          <div class="grid grid-cols-2 gap-6">
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <p class="text-4xl font-bold text-cyan-400">150+</p>
-              <p class="text-white/60 text-sm">Projects</p>
-            </div>
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <p class="text-4xl font-bold text-cyan-400">50+</p>
-              <p class="text-white/60 text-sm">Clients</p>
-            </div>
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <p class="text-4xl font-bold text-cyan-400">5+</p>
-              <p class="text-white/60 text-sm">Years</p>
-            </div>
-            <div class="text-center p-4 bg-white/5 rounded-xl">
-              <p class="text-4xl font-bold text-cyan-400">98%</p>
-              <p class="text-white/60 text-sm">Satisfaction</p>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="text-cyan-400 font-semibold uppercase tracking-widest text-sm reveal">About Us</span>
+          <h1 class="font-display text-5xl md:text-6xl font-bold mt-4 mb-6 reveal">Building Digital <span class="gradient-text">Excellence</span></h1>
+          <p class="text-xl text-white/70 mb-6 reveal">Swit Developer is a premier digital agency specializing in web development, e-commerce solutions, and AI automation. Since 2020, we've helped 150+ businesses transform their online presence.</p>
+          <p class="text-white/60 mb-8 reveal">Our team combines technical expertise with creative innovation to deliver solutions that drive real business results.</p>
+          <a href="contact.html" class="btn-primary px-8 py-4 rounded-full text-white font-semibold inline-flex items-center gap-2 reveal">Work With Us <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-500/20 rounded-3xl blur-3xl animate-float"></div>
+          <div class="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8">
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center p-6 bg-white/5 rounded-2xl reveal">
+                <p class="text-5xl font-bold text-cyan-400">150+</p>
+                <p class="text-white/60 mt-2">Projects</p>
+              </div>
+              <div class="text-center p-6 bg-white/5 rounded-2xl reveal">
+                <p class="text-5xl font-bold text-purple-400">50+</p>
+                <p class="text-white/60 mt-2">Clients</p>
+              </div>
+              <div class="text-center p-6 bg-white/5 rounded-2xl reveal">
+                <p class="text-5xl font-bold text-green-400">5+</p>
+                <p class="text-white/60 mt-2">Years</p>
+              </div>
+              <div class="text-center p-6 bg-white/5 rounded-2xl reveal">
+                <p class="text-5xl font-bold text-orange-400">98%</p>
+                <p class="text-white/60 mt-2">Satisfaction</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Values -->
-  <section class="py-20 bg-brand-darker">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">Our Values</span>
-        <h2 class="font-serif text-4xl font-bold text-white mt-4">What We Stand For</h2>
+
+  <section class="py-20 bg-[#050508]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-cyan-400 font-semibold uppercase tracking-widest text-sm">Our Values</span>
+        <h2 class="font-display text-4xl font-bold mt-4">What We Stand For</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center reveal">
           <div class="w-16 h-16 bg-cyan-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-gem text-3xl text-cyan-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Quality First</h3>
-          <p class="text-white/60">We never compromise on quality. Every pixel, every line of code matters.</p>
+          <h3 class="text-xl font-semibold mb-3">Quality First</h3>
+          <p class="text-white/60">We never compromise on quality. Every pixel matters.</p>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center reveal">
           <div class="w-16 h-16 bg-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-handshake text-3xl text-purple-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Partnership</h3>
-          <p class="text-white/60">We work alongside you, not just for you. Your success is our success.</p>
+          <h3 class="text-xl font-semibold mb-3">Partnership</h3>
+          <p class="text-white/60">Your success is our success. We work alongside you.</p>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center reveal">
           <div class="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-rocket text-3xl text-green-400"></i>
           </div>
-          <h3 class="text-xl font-semibold text-white mb-3">Innovation</h3>
+          <h3 class="text-xl font-semibold mb-3">Innovation</h3>
           <p class="text-white/60">We stay ahead of trends to give you cutting-edge solutions.</p>
         </div>
       </div>
     </div>
   </section>
-  
-  <div id="footer-placeholder"></div>
-  <script src="js/main.js"></script>
+
+  <footer class="bg-[#050508] border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+      <div class="flex justify-between items-center">
+        <span class="font-display font-bold">Swit Developer</span>
+        <p class="text-white/40 text-sm">&copy; 2024</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.reveal').forEach((elem, i) => {
+      gsap.from(elem, { scrollTrigger: { trigger: elem, start: "top 85%" }, y: 50, opacity: 0, duration: 0.8, delay: i * 0.1, ease: "power3.out" });
+    });
+  </script>
 </body>
 </html>
