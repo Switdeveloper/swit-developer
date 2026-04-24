@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swit Developer | Digital Marketing & Web Development Agency</title>
+  <meta name="description" content="Transform your business with Swit Developer - Premium Shopify, WordPress, AI automation, and digital marketing solutions.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'serif': ['Playfair Display', 'serif'],
+            'sans': ['Inter', 'sans-serif'],
+          },
+          colors: {
+            'brand-dark': '#0f172a',
+            'brand-darker': '#0a0f1c',
+            'brand-cyan': '#00d4ff',
+            'brand-purple': '#7c3aed',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Custom Styles */
+    body { font-family: 'Inter', sans-serif; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 4px; }
+    
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    .fade-up.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+    }
+    .fade-in.animate-in { opacity: 1; }
+    
+    /* Hero Background Animation */
+    .hero-gradient {
+      background: radial-gradient(ellipse at top, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at bottom, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                  #0f172a;
+    }
+    
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    
+    /* Glow Effect */
+    .glow-cyan {
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+    }
+    
+    /* Card Hover */
+    .service-card {
+      transition: all 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-white overflow-x-hidden">
+  
+  <!-- Header Placeholder -->
+  <div id="header-placeholder"></div>
+  
+  <!-- Hero Section -->
+  <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-20">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 3s;"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Hero Content -->
+        <div class="fade-up">
+          <div class="inline-flex items-center px-4 py-2 bg-white/5 border border-cyan-400/30 rounded-full mb-6">
+            <span class="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
+            <span class="text-cyan-400 text-sm font-medium">Available for Projects</span>
+          </div>
+          
+          <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+            Digital <span class="gradient-text">Excellence</span><br>
+            Delivered
+          </h1>
+          
+          <p class="text-xl text-white/70 mb-8 max-w-lg leading-relaxed">
+            Transform your online presence with premium Shopify, WordPress, and AI-powered solutions. We build websites that convert.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
+              Start Your Project
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+            <a href="services.html" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all">
+              View Services
+            </a>
+          </div>
+          
+          <!-- Trust Badges -->
+          <div class="mt-12 flex items-center gap-8">
+            <div>
+              <p class="text-3xl font-bold text-white" data-counter="150" data-suffix="+">0</p>
+              <p class="text-white/50 text-sm">Projects Completed</p>
+            </div>
+            <div class="h-12 w-px bg-white/20"></div>
+            <div>
+              <p class="text-3xl font-bold text-white" data-counter="98" data-suffix="%">0</p>
+              <p class="text-white/50 text-sm">Client Satisfaction</p>
+            </div>
+            <div class="h-12 w-px bg-white/20"></div>
+            <div>
+              <p class="text-3xl font-bold text-white" data-counter="5" data-suffix="+">0</p>
+              <p class="text-white/50 text-sm">Years Experience</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hero Visual -->
+        <div class="hidden lg:block fade-up" style="animation-delay: 0.2s;">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-500/20 rounded-3xl blur-2xl"></div>
+            <div class="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 glow-cyan">
+              <!-- Mock Dashboard UI -->
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                  </div>
+                  <div class="text-white/30 text-xs">swit-developer.com</div>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                  <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <i class="fab fa-shopify text-3xl text-cyan-400 mb-2"></i>
+                    <p class="text-xs text-white/60">Shopify</p>
+                  </div>
+                  <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <i class="fab fa-wordpress text-3xl text-blue-400 mb-2"></i>
+                    <p class="text-xs text-white/60">WordPress</p>
+                  </div>
+                  <div class="bg-white/5 rounded-xl p-4 text-center">
+                    <i class="fas fa-robot text-3xl text-purple-400 mb-2"></i>
+                    <p class="text-xs text-white/60">AI</p>
+                  </div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm text-white/70">Website Traffic</span>
+                    <span class="text-cyan-400 text-sm font-semibold">+127%</span>
+                  </div>
+                  <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 w-3/4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="py-24 bg-brand-darker">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">What We Do</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+          Services That Drive <span class="gradient-text">Results</span>
+        </h2>
+        <p class="text-white/60 text-lg max-w-2xl mx-auto">
+          From e-commerce platforms to AI automation, we provide comprehensive digital solutions tailored to your business.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Shopify -->
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up">
+          <div class="w-14 h-14 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+            <i class="fab fa-shopify text-3xl text-cyan-400"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Shopify Development</h3>
+          <p class="text-white/60 mb-6">Custom themes, app integrations, and store optimization for maximum conversions.</p>
+          <a href="shopify.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- WordPress -->
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.1s;">
+          <div class="w-14 h-14 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-xl flex items-center justify-center mb-6">
+            <i class="fab fa-wordpress text-3xl text-blue-400"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">WordPress Development</h3>
+          <p class="text-white/60 mb-6">Custom themes, plugin development, and enterprise-level WordPress solutions.</p>
+          <a href="wordpress.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Web Solutions -->
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.2s;">
+          <div class="w-14 h-14 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-server text-3xl text-purple-400"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Web Solutions</h3>
+          <p class="text-white/60 mb-6">Wix, cPanel management, hosting setup, and domain configuration services.</p>
+          <a href="web-solutions.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- AI Automation -->
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.3s;">
+          <div class="w-14 h-14 bg-gradient-to-br from-green-400/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-robot text-3xl text-green-400"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">AI Automation</h3>
+          <p class="text-white/60 mb-6">Chatbots, workflow automation, and AI integration to streamline your business.</p>
+          <a href="ai-automation.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Marketing -->
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 fade-up" style="animation-delay: 0.4s;">
+          <div class="w-14 h-14 bg-gradient-to-br from-orange-400/20 to-red-500/20 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-chart-line text-3xl text-orange-400"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Digital Marketing</h3>
+          <p class="text-white/60 mb-6">SEO, social media management, and paid advertising campaigns that deliver ROI.</p>
+          <a href="marketing.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+            Learn More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Custom Solutions -->
+        <div class="service-card bg-gradient-to-br from-cyan-400/10 to-purple-500/10 border border-cyan-400/30 rounded-2xl p-8 fade-up" style="animation-delay: 0.5s;">
+          <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-xl flex items-center justify-center mb-6">
+            <i class="fas fa-lightbulb text-3xl text-white"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Custom Solutions</h3>
+          <p class="text-white/60 mb-6">Need something unique? We build custom web applications tailored to your needs.</p>
+          <a href="contact.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+            Discuss Your Project
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="services.html" class="inline-flex items-center px-8 py-4 border border-cyan-400/50 text-cyan-400 font-semibold rounded-full hover:bg-cyan-400/10 transition-all">
+          View All Services
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stats Section -->
+  <section class="py-20 bg-brand-dark border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center fade-up">
+          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="150" data-suffix="+">0</p>
+          <p class="text-white/60">Projects Completed</p>
+        </div>
+        <div class="text-center fade-up" style="animation-delay: 0.1s;">
+          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="50" data-suffix="+">0</p>
+          <p class="text-white/60">Happy Clients</p>
+        </div>
+        <div class="text-center fade-up" style="animation-delay: 0.2s;">
+          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="5" data-suffix="+">0</p>
+          <p class="text-white/60">Years Experience</p>
+        </div>
+        <div class="text-center fade-up" style="animation-delay: 0.3s;">
+          <p class="text-5xl md:text-6xl font-bold text-white mb-2" data-counter="98" data-suffix="%">0</p>
+          <p class="text-white/60">Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Process Section -->
+  <section class="py-24 bg-brand-darker">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">Our Process</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+          How We <span class="gradient-text">Work</span>
+        </h2>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center fade-up">
+          <div class="w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative">
+            <span class="text-2xl font-bold text-cyan-400">01</span>
+            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-cyan-400/50 to-transparent"></div>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Discovery</h3>
+          <p class="text-white/60">Understanding your goals, audience, and requirements</p>
+        </div>
+        
+        <div class="text-center fade-up" style="animation-delay: 0.15s;">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative">
+            <span class="text-2xl font-bold text-blue-400">02</span>
+            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-blue-400/50 to-transparent"></div>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Strategy</h3>
+          <p class="text-white/60">Planning the perfect solution for your needs</p>
+        </div>
+        
+        <div class="text-center fade-up" style="animation-delay: 0.3s;">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-6 relative">
+            <span class="text-2xl font-bold text-purple-400">03</span>
+            <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-purple-400/50 to-transparent"></div>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Development</h3>
+          <p class="text-white/60">Building with precision and attention to detail</p>
+        </div>
+        
+        <div class="text-center fade-up" style="animation-delay: 0.45s;">
+          <div class="w-16 h-16 bg-gradient-to-br from-green-400/20 to-teal-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl font-bold text-green-400">04</span>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">Launch</h3>
+          <p class="text-white/60">Deploying and supporting your success</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="py-24 bg-gradient-to-br from-cyan-400/10 to-purple-500/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="fade-up">
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+          Ready to Transform Your <span class="gradient-text">Digital Presence</span>?
+        </h2>
+        <p class="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
+          Let's discuss your project and create something amazing together. Get a free consultation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="contact.html" class="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-lg">
+            Get a Free Quote
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          <a href="services.html" class="inline-flex items-center justify-center px-10 py-5 border border-white/30 text-white font-semibold rounded-full hover:bg-white/5 transition-all text-lg">
+            Explore Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

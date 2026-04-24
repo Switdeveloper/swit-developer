@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Swit Developer - Get a Free Quote</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{fontFamily:{serif:['Playfair Display', 'serif'],sans:['Inter', 'sans-serif']},colors:{'brand-dark':'#0f172a','brand-darker':'#0a0f1c','brand-cyan':'#00d4ff'}}}}</script>
+  <style>body{font-family:'Inter',sans-serif}.font-serif{font-family:'Playfair Display',serif}.gradient-text{background:linear-gradient(135deg,#00d4ff 0%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}</style>
+</head>
+<body class="bg-brand-dark text-white">
+  <div id="header-placeholder"></div>
+  
+  <section class="pt-32 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">Get In Touch</span>
+        <h1 class="font-serif text-5xl font-bold text-white mt-4 mb-6">Let's Start Your <span class="gradient-text">Project</span></h1>
+        <p class="text-xl text-white/70 max-w-2xl mx-auto">Ready to transform your digital presence? Get a free consultation and quote.</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Contact Info -->
+        <div class="lg:col-span-1 space-y-8">
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <div class="w-12 h-12 bg-cyan-400/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-envelope text-2xl text-cyan-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">Email</h3>
+            <p class="text-white/60">hello@switdeveloper.com</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <div class="w-12 h-12 bg-purple-400/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-phone text-2xl text-purple-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">Phone</h3>
+            <p class="text-white/60">+1 (555) 123-4567</p>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <div class="w-12 h-12 bg-green-400/20 rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-clock text-2xl text-green-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-white mb-2">Response Time</h3>
+            <p class="text-white/60">Within 24 hours</p>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <form class="bg-white/5 border border-white/10 rounded-2xl p-8" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-white/80 mb-2">Name</label>
+                <input type="text" name="name" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-cyan-400 focus:outline-none transition-colors" placeholder="Your name">
+              </div>
+              <div>
+                <label class="block text-white/80 mb-2">Email</label>
+                <input type="email" name="email" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-cyan-400 focus:outline-none transition-colors" placeholder="your@email.com">
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="block text-white/80 mb-2">Service Interested In</label>
+              <select name="service" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:border-cyan-400 focus:outline-none transition-colors">
+                <option value="">Select a service</option>
+                <option value="shopify">Shopify Development</option>
+                <option value="wordpress">WordPress Development</option>
+                <option value="web-solutions">Web Solutions</option>
+                <option value="ai-automation">AI Automation</option>
+                <option value="marketing">Digital Marketing</option>
+                <option value="custom">Custom Project</option>
+              </select>
+            </div>
+            <div class="mb-6">
+              <label class="block text-white/80 mb-2">Message</label>
+              <textarea name="message" rows="5" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-cyan-400 focus:outline-none transition-colors resize-none" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all">
+              Send Message
+              <i class="fas fa-paper-plane ml-2"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

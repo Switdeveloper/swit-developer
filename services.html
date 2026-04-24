@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Swit Developer - Digital Marketing & Web Development</title>
+  <meta name="description" content="Comprehensive digital services including Shopify, WordPress, AI automation, web solutions, and digital marketing.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { 'serif': ['Playfair Display', 'serif'], 'sans': ['Inter', 'sans-serif'] },
+          colors: { 'brand-dark': '#0f172a', 'brand-darker': '#0a0f1c', 'brand-cyan': '#00d4ff' }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .gradient-text { background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .service-card { transition: all 0.3s ease; }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1); }
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+    .fade-up.animate-in { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-brand-dark text-white">
+  <div id="header-placeholder"></div>
+  
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 bg-gradient-to-b from-cyan-400/5 to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-cyan-400 font-semibold uppercase tracking-wider text-sm">What We Offer</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-bold text-white mt-4 mb-6">
+        Our <span class="gradient-text">Services</span>
+      </h1>
+      <p class="text-xl text-white/70 max-w-3xl mx-auto">
+        Comprehensive digital solutions tailored to elevate your business. From e-commerce platforms to AI automation, we've got you covered.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Services Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- E-Commerce Development -->
+      <div class="mb-20">
+        <div class="flex items-center mb-8">
+          <div class="w-12 h-12 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-xl flex items-center justify-center mr-4">
+            <i class="fas fa-shopping-cart text-2xl text-cyan-400"></i>
+          </div>
+          <h2 class="font-serif text-3xl font-bold text-white">E-Commerce Development</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8">
+            <div class="flex items-start justify-between mb-4">
+              <i class="fab fa-shopify text-4xl text-cyan-400"></i>
+              <span class="px-3 py-1 bg-cyan-400/20 text-cyan-400 text-sm rounded-full">Popular</span>
+            </div>
+            <h3 class="text-2xl font-semibold text-white mb-3">Shopify Development</h3>
+            <p class="text-white/60 mb-6">Custom themes, app integrations, payment gateways, and store optimization for maximum conversions.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-cyan-400 mr-2"></i> Custom Theme Development</li>
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-cyan-400 mr-2"></i> App Integration</li>
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-cyan-400 mr-2"></i> Store Optimization</li>
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-cyan-400 mr-2"></i> Migration Services</li>
+            </ul>
+            <a href="shopify.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+              Learn More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+          
+          <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8">
+            <i class="fab fa-wordpress text-4xl text-blue-400 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-white mb-3">WordPress Development</h3>
+            <p class="text-white/60 mb-6">Custom themes, plugin development, WooCommerce integration, and enterprise WordPress solutions.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-blue-400 mr-2"></i> Custom Theme Design</li>
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-blue-400 mr-2"></i> Plugin Development</li>
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-blue-400 mr-2"></i> WooCommerce Setup</li>
+              <li class="flex items-center text-white/70"><i class="fas fa-check text-blue-400 mr-2"></i> Performance Optimization</li>
+            </ul>
+            <a href="wordpress.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+              Learn More <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Web Solutions -->
+      <div class="mb-20">
+        <div class="flex items-center mb-8">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-xl flex items-center justify-center mr-4">
+            <i class="fas fa-server text-2xl text-purple-400"></i>
+          </div>
+          <h2 class="font-serif text-3xl font-bold text-white">Web Solutions & Hosting</h2>
+        </div>
+        
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8 max-w-2xl">
+          <h3 class="text-2xl font-semibold text-white mb-3">Complete Web Solutions</h3>
+          <p class="text-white/60 mb-6">Wix development, cPanel management, hosting setup, domain configuration, and ongoing maintenance.</p>
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="flex items-center text-white/70"><i class="fab fa-wix text-purple-400 mr-2"></i> Wix Development</div>
+            <div class="flex items-center text-white/70"><i class="fas fa-cpanel text-orange-400 mr-2"></i> cPanel Management</div>
+            <div class="flex items-center text-white/70"><i class="fas fa-globe text-green-400 mr-2"></i> Hosting Setup</div>
+            <div class="flex items-center text-white/70"><i class="fas fa-domain text-blue-400 mr-2"></i> Domain Config</div>
+          </div>
+          <a href="web-solutions.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- AI & Marketing -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-400/20 to-teal-500/20 rounded-xl flex items-center justify-center mr-4">
+              <i class="fas fa-robot text-2xl text-green-400"></i>
+            </div>
+            <h2 class="font-serif text-2xl font-bold text-white">AI Automation</h2>
+          </div>
+          <p class="text-white/60 mb-6">Chatbots, workflow automation, AI integrations, and intelligent business process optimization.</p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center text-white/70"><i class="fas fa-check text-green-400 mr-2"></i> Custom Chatbots</li>
+            <li class="flex items-center text-white/70"><i class="fas fa-check text-green-400 mr-2"></i> Workflow Automation</li>
+            <li class="flex items-center text-white/70"><i class="fas fa-check text-green-400 mr-2"></i> AI Integration</li>
+          </ul>
+          <a href="ai-automation.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        
+        <div class="service-card bg-white/5 border border-white/10 rounded-2xl p-8">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-400/20 to-red-500/20 rounded-xl flex items-center justify-center mr-4">
+              <i class="fas fa-chart-line text-2xl text-orange-400"></i>
+            </div>
+            <h2 class="font-serif text-2xl font-bold text-white">Digital Marketing</h2>
+          </div>
+          <p class="text-white/60 mb-6">SEO optimization, social media management, paid advertising, and comprehensive digital marketing strategies.</p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-center text-white/70"><i class="fas fa-check text-orange-400 mr-2"></i> SEO Services</li>
+            <li class="flex items-center text-white/70"><i class="fas fa-check text-orange-400 mr-2"></i> Social Media</li>
+            <li class="flex items-center text-white/70"><i class="fas fa-check text-orange-400 mr-2"></i> Paid Ads</li>
+          </ul>
+          <a href="marketing.html" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-br from-cyan-400/10 to-purple-500/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-serif text-4xl font-bold text-white mb-6">Not Sure What You Need?</h2>
+      <p class="text-xl text-white/70 mb-8">Let's discuss your project and find the perfect solution for your business.</p>
+      <a href="contact.html" class="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-cyan-400 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg transition-all text-lg">
+        Get a Free Consultation
+      </a>
+    </div>
+  </section>
+  
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
